@@ -1,4 +1,4 @@
-# Cozy API
+# CozyReq
 
 Let AI agents interact with your API.
 
@@ -12,6 +12,7 @@ Install the following prerequisites:
 You can easily install the dependencies:
 
 ```bash
+mise trust
 mise install
 npm install
 uv sync
