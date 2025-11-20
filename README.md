@@ -15,25 +15,12 @@ You can easily install the dependencies:
 mise trust
 mise install
 npm install
-uv sync
 ```
 
 ## Usage
-
-Add a `.env` file with development config:
-
-```
-DATABASE_FILE=~/config/dev.cozyapi/data.db
-```
 
 Run the application locally:
 
 ```bash
 mise run dev:app
-```
-
-Run MCP server with inspector:
-
-```bash
-mise run dev:mcp
 ```
