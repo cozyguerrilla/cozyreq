@@ -11,23 +11,15 @@ env:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        include:
-          - platform: "macos-latest"
-          - platform: "ubuntu-latest"
-          - platform: "ubuntu-24.04-arm"
-          - platform: "windows-latest"
-
-    runs-on: ${{ matrix.platform }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v6
-      - name: install dependencies (ubuntu only)
-        if: ${{ startsWith(matrix.platform, 'ubuntu-') }}
+      - name: Install OS dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf xdg-utils
+          sudo apt-get install -y \
+          libwebkit2gtk-4.1-dev
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -37,11 +29,7 @@ jobs:
           components: rustfmt, clippy
       - uses: swatinem/rust-cache@v2
         with:
-          workspaces: "./src-tauri -> target"
-      - name: Install Typescript dependencies
-        run: bun install --frozen-lockfile
-      - name: Build Typescript
-        run: bun run build
+          workspaces: src-tauri
       - name: Check Rust formatting
         run: cargo fmt -- --check
         working-directory: ./src-tauri
@@ -51,3 +39,7 @@ jobs:
       - name: Run Rust tests
         run: cargo test
         working-directory: ./src-tauri
+      - name: Install Typescript dependencies
+        run: bun install --frozen-lockfile
+      - name: Build Typescript
+        run: bun run build
