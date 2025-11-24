@@ -14,7 +14,7 @@ You can easily install the dependencies:
 ```bash
 mise trust
 mise install
-npm install
+bun install
 ```
 
 ## Usage
@@ -22,5 +22,5 @@ npm install
 Run the application locally:
 
 ```bash
-mise run dev:app
+bun run tauri dev
 ```
