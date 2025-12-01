@@ -13,10 +13,12 @@
 - Run single test: `uv run pytest path/to/test_file.py::test_function_name`
 
 ## Code Style
-- **Indentation**: 4 spaces for Python (per .editorconfig)
+- **Indentation**: 4 spaces for Python, 2 spaces for other files (per .editorconfig)
 - **Line endings**: LF only
-- **Formatting**: Use Ruff (enforced in CI)
-- **Type hints**: Required - Pyright type checking is enabled
+- **Formatting**: Use Ruff (enforced in CI) - run `uv run ruff format` before committing
+- **Type hints**: Required for all functions - Pyright type checking is enabled
+- **Imports**: Follow PEP 8 - standard library, third-party, local imports
+- **Naming**: snake_case for functions/variables, PascalCase for classes
 - **Dependencies**: Managed via uv, specified in pyproject.toml
 - **Charset**: UTF-8 with final newline in all files
 
